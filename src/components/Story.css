@@ -1,0 +1,191 @@
+.story {
+  position: relative;
+  padding: 8rem 0;
+  background-color: #F8F4EC;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.story__watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 18vw;
+  color: rgba(212, 175, 55, 0.06);
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+  line-height: 1;
+}
+
+.story__container {
+  position: relative;
+  z-index: 1;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.story__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .story__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+  }
+}
+
+.story__image-wrap {
+  position: relative;
+  order: 2;
+}
+
+@media (min-width: 768px) {
+  .story__image-wrap {
+    order: 1;
+  }
+}
+
+.story__frame {
+  position: absolute;
+  top: -1rem;
+  left: -1rem;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  pointer-events: none;
+}
+
+.story__image {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+.story__badge {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background-color: rgba(248, 244, 236, 0.94);
+  padding: 0.85rem 1.5rem;
+  text-align: center;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.story__badge-text {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.4rem;
+  color: #800020;
+  letter-spacing: 0.04em;
+  margin: 0;
+  line-height: 1;
+}
+
+.story__text {
+  order: 1;
+}
+
+@media (min-width: 768px) {
+  .story__text {
+    order: 2;
+  }
+}
+
+.story__eyebrow {
+  font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 0.75rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: #D4AF37;
+  margin: 0 0 1.5rem 0;
+}
+
+.story__heading {
+  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: #2a0d12;
+  margin: 0 0 2rem 0;
+}
+
+.story__heading-accent {
+  display: block;
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #800020;
+  margin-top: 0.25rem;
+}
+
+.story__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-weight: 400;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: rgba(42, 13, 18, 0.78);
+  letter-spacing: 0.01em;
+}
+
+.story__body p {
+  margin: 0;
+}
+
+.story__signature {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.story__signature-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.4) 0%, transparent 100%);
+}
+
+.story__signature-line--right {
+  background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.4) 100%);
+}
+
+.story__signature-mark {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.5rem;
+  letter-spacing: 0.15em;
+  color: #D4AF37;
+}
+
+@media (max-width: 640px) {
+  .story {
+    padding: 5rem 0;
+  }
+  .story__image {
+    height: 480px;
+  }
+  .story__frame {
+    top: -0.6rem;
+    left: -0.6rem;
+  }
+}

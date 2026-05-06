@@ -1,59 +1,50 @@
 import storyPhoto from '../assets/DSC06969.jpg'
+import './Story.css'
 
 export default function Story() {
   return (
-    <section id="story" className="py-32 bg-cream relative overflow-hidden">
-      {/* Decorative background text */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-script text-gold/5 select-none pointer-events-none whitespace-nowrap"
-        style={{ fontSize: '20vw' }}>
-        Forever
-      </div>
+    <section id="story" className="story">
+      <span className="story__watermark" aria-hidden="true">Forever</span>
 
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-          {/* Image */}
-          <div className="fade-in relative order-2 md:order-1">
-            <div className="relative">
-              {/* Offset frame */}
-              <div className="absolute -top-4 -left-4 w-full h-full border border-gold/30" />
-              <img
-                src={storyPhoto}
-                alt="Sharvin Nair and Asha"
-                className="relative w-full object-cover"
-                style={{ height: '600px', objectPosition: 'center 35%' }}
-              />
-              {/* Gold overlay corner */}
-              <div className="absolute bottom-6 right-6 bg-cream/90 px-6 py-4 text-center">
-                <p className="font-script text-gold text-3xl">Est. 2025</p>
-              </div>
+      <div className="story__container">
+        <div className="story__grid">
+          <div className="story__image-wrap fade-in">
+            <span className="story__frame" aria-hidden="true" />
+            <img
+              src={storyPhoto}
+              alt="Sharvin Nair and Asha"
+              className="story__image"
+            />
+            <div className="story__badge">
+              <p className="story__badge-text">Est. 2025</p>
             </div>
           </div>
 
-          {/* Text */}
-          <div className="fade-up order-1 md:order-2">
-            <p className="section-label mb-6">Our Story</p>
-            <h2 className="display-heading text-5xl md:text-6xl mb-8">
-              Two souls,<br />
-              <span className="font-serif italic font-light text-gold normal-case">one journey</span>
+          <div className="story__text fade-up">
+            <p className="story__eyebrow">Our Story</p>
+            <h2 className="story__heading">
+              Two souls,
+              <span className="story__heading-accent">one journey</span>
             </h2>
 
-            <div className="space-y-5 text-charcoal/70 font-serif text-lg font-light leading-relaxed">
+            <div className="story__body">
               <p>
-                What began as a chance encounter blossomed into a love story written in the stars.
-                Through shared laughter, quiet mornings, and a thousand little moments,
-                Sharvin Nair and Asha discovered in each other a home.
+                What began as a chance encounter blossomed into a love story
+                written in the stars. Through shared laughter, quiet mornings,
+                and a thousand little moments, Sharvin Nair and Asha discovered
+                in each other a home.
               </p>
               <p>
-                Now, surrounded by the people they love most, they invite you to witness
-                the beginning of their forever — a celebration of love, family, and the
-                beautiful journey ahead.
+                Now, surrounded by the people they love most, they invite you
+                to witness the beginning of their forever &mdash; a celebration
+                of love, family, and the beautiful journey ahead.
               </p>
             </div>
 
-            <div className="mt-12 flex items-center gap-6">
-              <div className="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent" />
-              <span className="font-script text-gold text-2xl">S & A</span>
-              <div className="h-px flex-1 bg-gradient-to-l from-gold/40 to-transparent" />
+            <div className="story__signature" aria-hidden="true">
+              <span className="story__signature-line" />
+              <span className="story__signature-mark">S &amp; A</span>
+              <span className="story__signature-line story__signature-line--right" />
             </div>
           </div>
         </div>
