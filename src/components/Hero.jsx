@@ -1,9 +1,6 @@
 import heroPhoto from '../assets/DSC06915.jpg'
 import './Hero.css'
 
-const MANDALA_SPOKES = [0, 22.5, 45, 67.5, 90, 112.5, 135, 157.5]
-const MANDALA_PETALS = [0, 45, 90, 135, 180, 225, 270, 315]
-
 export default function Hero({ guestName }) {
   return (
     <section id="hero" className="hero">
@@ -13,37 +10,6 @@ export default function Hero({ guestName }) {
         aria-hidden="true"
       />
       <div className="hero__overlay" aria-hidden="true" />
-
-      <svg className="hero__mandala" viewBox="0 0 400 400" aria-hidden="true">
-        <g fill="none" stroke="#D4AF37" strokeWidth="0.4">
-          <circle cx="200" cy="200" r="190" />
-          <circle cx="200" cy="200" r="155" />
-          <circle cx="200" cy="200" r="115" />
-          <circle cx="200" cy="200" r="75" />
-          <circle cx="200" cy="200" r="35" />
-          <g transform="translate(200,200)">
-            {MANDALA_SPOKES.map((deg) => (
-              <line
-                key={`spoke-${deg}`}
-                x1="0"
-                y1="-190"
-                x2="0"
-                y2="190"
-                transform={`rotate(${deg})`}
-              />
-            ))}
-          </g>
-          <g transform="translate(200,200)">
-            {MANDALA_PETALS.map((deg) => (
-              <path
-                key={`petal-${deg}`}
-                d="M0,-155 Q35,-115 0,-75 Q-35,-115 0,-155 Z"
-                transform={`rotate(${deg})`}
-              />
-            ))}
-          </g>
-        </g>
-      </svg>
 
       <div className="hero__corner hero__corner--tl" aria-hidden="true" />
       <div className="hero__corner hero__corner--tr" aria-hidden="true" />
