@@ -10,7 +10,7 @@ import dsc06969 from '../assets/DSC06969.jpg'
 const photos = [
   {
     src: dsc06915,
-    alt: 'Sharvin Nair and Asha smiling at the temple',
+    alt: 'Sharvin Nair and Asha smiling together',
     span: 'col-span-2 md:col-span-3 row-span-2',
     position: 'center 42%',
   },
@@ -22,7 +22,7 @@ const photos = [
   },
   {
     src: photo1,
-    alt: 'Sharvin Nair and Asha at the temple',
+    alt: 'Sharvin Nair and Asha together',
     span: 'col-span-1 row-span-1',
     position: 'center 45%',
   },
@@ -40,7 +40,7 @@ const photos = [
   },
   {
     src: dsc06969,
-    alt: 'Sharvin Nair and Asha in a temple portrait',
+    alt: 'A portrait of Sharvin Nair and Asha',
     span: 'col-span-1 row-span-1',
     position: 'center 35%',
   },

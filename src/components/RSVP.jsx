@@ -90,12 +90,12 @@ export default function RSVP({ guestName }) {
       <div className="max-w-2xl mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="text-center mb-20 fade-up">
-          <p className="section-label mb-6">Kindly Reply By May 15, 2025</p>
+          <p className="section-label mb-6">Kindly Reply</p>
           <h2 className="display-heading text-5xl md:text-6xl mb-6">
             Will you <span className="font-serif italic font-light text-gold normal-case">join us?</span>
           </h2>
           <p className="font-serif text-charcoal/50 text-lg font-light italic">
-            Your presence is the greatest gift
+            Your presence means the world to us
           </p>
         </div>
 

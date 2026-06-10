@@ -3,12 +3,14 @@ const events = [
     id: 'ceremony',
     icon: '\uD83D\uDC8D',
     title: 'Wedding Ceremony',
-    time: '10:00 AM',
-    duration: '2 hours',
-    venue: 'Sri Mahamariamman Temple',
-    address: 'Jalan Tun H.S. Lee, City Centre, 50000 Kuala Lumpur',
-    note: 'Please arrive 15 minutes early. Traditional attire welcome.',
-    mapLink: 'https://maps.google.com/?q=Sri+Mahamariamman+Temple+Kuala+Lumpur',
+    time: '10:00 AM \u2013 12:00 PM',
+    duration: 'Morning celebration',
+    venue: "D'Raksh Golden Ballroom",
+    address:
+      'L1-01, Menara Maxisegar, Jalan Pandan Indah 4/5, Pandan Indah, 55100 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur',
+    note: 'Please arrive 15 minutes early to be seated for the ceremony.',
+    mapLink:
+      'https://www.google.com/maps/search/?api=1&query=D%27Raksh+Golden+Ballroom+Menara+Maxisegar+Pandan+Indah',
   },
 ]
 
@@ -97,7 +99,7 @@ export default function EventDetails() {
             When &amp; <span className="font-serif italic font-light text-gold normal-case">Where</span>
           </h2>
           <p className="font-serif text-charcoal/50 text-xl font-light italic">
-            Saturday, the 21st of June, 2025
+            Sunday, the 13th of September, 2026
           </p>
         </div>
 
@@ -106,14 +108,6 @@ export default function EventDetails() {
           {events.map((event, i) => (
             <EventCard key={event.id} event={event} index={i} />
           ))}
-        </div>
-
-        {/* Dress code note */}
-        <div className="fade-up mt-16 text-center border-t border-gold/15 pt-12">
-          <p className="section-label mb-3">Dress Code</p>
-          <p className="font-serif text-2xl text-charcoal font-light">
-            Indian Traditional or <span className="italic text-gold">Smart Formal</span>
-          </p>
         </div>
       </div>
     </section>

@@ -6,8 +6,10 @@ import Hero from './components/Hero'
 import Story from './components/Story'
 import Countdown from './components/Countdown'
 import EventDetails from './components/EventDetails'
+import Family from './components/Family'
 import Gallery from './components/Gallery'
 import RSVP from './components/RSVP'
+import Location from './components/Location'
 import Footer from './components/Footer'
 import MusicToggle from './components/MusicToggle'
 
@@ -48,8 +50,10 @@ export default function App() {
       <Story />
       <Countdown />
       <EventDetails />
+      <Family />
       <Gallery />
       <RSVP guestName={guestName} />
+      <Location />
       <Footer />
       <MusicToggle />
     </div>

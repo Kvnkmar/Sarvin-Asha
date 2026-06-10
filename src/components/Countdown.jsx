@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useCountdown } from '../utils/hooks'
 
-const WEDDING_DATE = '2025-06-21T10:00:00'
+const WEDDING_DATE = '2026-09-13T10:00:00'
 
 function TimeUnit({ value, label }) {
   return (

@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-xl mx-auto px-6">
         <h2 className="font-display text-gold text-6xl mb-4">Sharvin Nair &amp; Asha</h2>
         <p className="font-sans text-xs tracking-ultra uppercase text-white/30 font-light mb-8">
-          21 · June · 2025
+          13 · September · 2026
         </p>
 
         <div className="flex items-center gap-4 justify-center mb-10">
@@ -15,11 +15,13 @@ export default function Footer() {
           <span className="h-px w-16 bg-gold/20" />
         </div>
 
-        <p className="font-serif text-white/30 italic text-lg font-light leading-relaxed">
-          "Two are better than one, because they have a good return for their labour."
+        <p className="font-serif text-white/40 italic text-lg md:text-xl font-light leading-relaxed">
+          Thank you for being part of our journey. Your love, blessings, and
+          support have meant so much to us, and we cannot wait to celebrate this
+          special day together.
         </p>
-        <p className="font-sans text-xs tracking-ultra uppercase text-gold/30 font-light mt-3">
-          Ecclesiastes 4:9
+        <p className="font-sans text-xs tracking-ultra uppercase text-gold/40 font-light mt-5">
+          With love, Sharvin &amp; Asha
         </p>
 
         <p className="font-sans text-xs text-white/20 font-light mt-12 tracking-wide">

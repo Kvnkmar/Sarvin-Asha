@@ -16,7 +16,7 @@ export default function Story() {
               className="story__image"
             />
             <div className="story__badge">
-              <p className="story__badge-text">Est. 2025</p>
+              <p className="story__badge-text">Est. 2026</p>
             </div>
           </div>
 

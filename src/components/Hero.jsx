@@ -78,7 +78,7 @@ export default function Hero({ guestName }) {
         </p>
 
         <p className="hero__details">
-          21 June 2025 &bull; 10:00 AM &bull; Sri Mahamariamman Temple
+          13 September 2026 &bull; 10:00 AM &ndash; 12:00 PM &bull; D&rsquo;Raksh Golden Ballroom
         </p>
 
         {guestName && (
