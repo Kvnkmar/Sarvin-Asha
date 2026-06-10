@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
 
       <div className="max-w-xl mx-auto px-6">
-        <h2 className="font-display text-gold text-6xl mb-4">Sharvin Nair &amp; Asha</h2>
+        <h2 className="font-display text-gold text-6xl mb-4">Sarvin Nair &amp; Asha</h2>
         <p className="font-sans text-xs tracking-ultra uppercase text-white/30 font-light mb-8">
           13 · September · 2026
         </p>
@@ -21,7 +21,7 @@ export default function Footer() {
           special day together.
         </p>
         <p className="font-script text-4xl text-gold/80 mt-6">
-          With love, Sharvin &amp; Asha
+          With love, Sarvin &amp; Asha
         </p>
 
         <p className="font-sans text-xs text-white/20 font-light mt-12 tracking-wide">

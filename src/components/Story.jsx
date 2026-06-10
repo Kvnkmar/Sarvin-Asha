@@ -12,7 +12,7 @@ export default function Story() {
             <span className="story__frame" aria-hidden="true" />
             <img
               src={storyPhoto}
-              alt="Sharvin Nair and Asha"
+              alt="Sarvin Nair and Asha"
               className="story__image"
             />
             <div className="story__badge">
@@ -31,7 +31,7 @@ export default function Story() {
               <p>
                 What began as a chance encounter blossomed into a love story
                 written in the stars. Through shared laughter, quiet mornings,
-                and a thousand little moments, Sharvin Nair and Asha discovered
+                and a thousand little moments, Sarvin Nair and Asha discovered
                 in each other a home.
               </p>
               <p>

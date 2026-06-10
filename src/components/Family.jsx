@@ -1,7 +1,7 @@
 const families = [
   {
     role: 'The Groom',
-    name: 'Sharvin',
+    name: 'Sarvin',
     relation: 'Son of',
     parents: ['Mr. K. Chandren', 'Mrs. Nirmila Devi @ Prema'],
   },

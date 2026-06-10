@@ -54,7 +54,7 @@ export default function Hero({ guestName }) {
         <p className="hero__eyebrow">Together with their families</p>
 
         <h1 className="hero__title">
-          <span className="hero__name">Sharvin Nair</span>
+          <span className="hero__name">Sarvin Nair</span>
           <span className="hero__amp" aria-hidden="true">&amp;</span>
           <span className="hero__name">Asha</span>
         </h1>

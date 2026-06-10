@@ -10,37 +10,37 @@ import dsc06969 from '../assets/DSC06969.jpg'
 const photos = [
   {
     src: dsc06915,
-    alt: 'Sharvin Nair and Asha smiling together',
+    alt: 'Sarvin Nair and Asha smiling together',
     span: 'col-span-2 md:col-span-3 row-span-2',
     position: 'center 42%',
   },
   {
     src: photo2,
-    alt: 'Sharvin Nair and Asha embracing',
+    alt: 'Sarvin Nair and Asha embracing',
     span: 'col-span-1 row-span-1',
     position: 'center 35%',
   },
   {
     src: photo1,
-    alt: 'Sharvin Nair and Asha together',
+    alt: 'Sarvin Nair and Asha together',
     span: 'col-span-1 row-span-1',
     position: 'center 45%',
   },
   {
     src: photo4,
-    alt: 'Sharvin Nair and Asha in an embrace',
+    alt: 'Sarvin Nair and Asha in an embrace',
     span: 'col-span-1 row-span-1',
     position: 'center 35%',
   },
   {
     src: dsc06946,
-    alt: 'Sharvin Nair and Asha showing their rings',
+    alt: 'Sarvin Nair and Asha showing their rings',
     span: 'col-span-1 row-span-1',
     position: 'center 55%',
   },
   {
     src: dsc06969,
-    alt: 'A portrait of Sharvin Nair and Asha',
+    alt: 'A portrait of Sarvin Nair and Asha',
     span: 'col-span-1 row-span-1',
     position: 'center 35%',
   },
