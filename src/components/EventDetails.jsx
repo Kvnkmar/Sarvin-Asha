@@ -11,6 +11,8 @@ const events = [
     note: 'Please arrive 15 minutes early to be seated for the ceremony.',
     mapLink:
       'https://www.google.com/maps/search/?api=1&query=D%27Raksh+Golden+Ballroom+Menara+Maxisegar+Pandan+Indah',
+    wazeLink:
+      'https://waze.com/ul?q=D%27Raksh%20Golden%20Ballroom%20Menara%20Maxisegar%20Pandan%20Indah&navigate=yes',
   },
 ]
 
@@ -73,15 +75,24 @@ function EventCard({ event, index }) {
             </div>
           </div>
 
-          <a
-            href={event.mapLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 text-gold font-sans text-xs tracking-ultra uppercase font-light hover:gap-5 transition-all duration-300 group/link"
-          >
-            <span>View on Map</span>
-            <span className="text-lg leading-none">{'\u2192'}</span>
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 pt-2">
+            <a
+              href={event.mapLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="gold-btn flex-1"
+            >
+              <span>Google Maps</span>
+            </a>
+            <a
+              href={event.wazeLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="gold-btn flex-1"
+            >
+              <span>Waze</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>

@@ -7,7 +7,7 @@ function TimeUnit({ value, label }) {
   return (
     <div className="flex flex-col items-center">
       <div className="relative">
-        <span className="font-subheading text-5xl md:text-7xl text-charcoal font-light tabular-nums leading-none">
+        <span className="font-subheading text-5xl md:text-7xl text-cream font-light tabular-nums leading-none">
           {String(value).padStart(2, '0')}
         </span>
         <div className="absolute -bottom-1 left-0 right-0 h-px bg-gold/30" />

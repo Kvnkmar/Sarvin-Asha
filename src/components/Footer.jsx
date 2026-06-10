@@ -20,7 +20,7 @@ export default function Footer() {
           support have meant so much to us, and we cannot wait to celebrate this
           special day together.
         </p>
-        <p className="font-sans text-xs tracking-ultra uppercase text-gold/40 font-light mt-5">
+        <p className="font-script text-4xl text-gold/80 mt-6">
           With love, Sharvin &amp; Asha
         </p>
 

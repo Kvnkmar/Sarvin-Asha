@@ -6,7 +6,6 @@ const navLinks = [
   { label: 'Family', href: '#family' },
   { label: 'Gallery', href: '#gallery' },
   { label: 'RSVP', href: '#rsvp' },
-  { label: 'Directions', href: '#location' },
 ]
 
 export default function Navbar() {
@@ -19,17 +18,25 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Solid bar when scrolled OR when the mobile menu is open
+  const solid = scrolled || menuOpen
+  const linkBase =
+    'font-sans text-xs tracking-ultra uppercase font-light transition-colors duration-300 hover:text-gold'
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
-        scrolled
+        solid
           ? 'bg-cream/95 backdrop-blur-sm border-b border-gold/10 py-4'
           : 'bg-transparent py-6'
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <a href="#hero" className="font-script text-2xl text-gold animate-shimmer">
+        <a
+          href="#hero"
+          className="font-script text-3xl text-gold animate-shimmer leading-none"
+        >
           S & A
         </a>
 
@@ -39,7 +46,7 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="font-sans text-xs tracking-ultra uppercase text-charcoal/60 hover:text-gold transition-colors duration-300"
+              className={`${linkBase} ${scrolled ? 'text-charcoal/60' : 'text-white/85'}`}
             >
               {link.label}
             </a>
@@ -53,20 +60,20 @@ export default function Navbar() {
           aria-label="Toggle menu"
         >
           <span
-            className={`block w-6 h-px bg-charcoal transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`}
+            className={`block w-6 h-px transition-all duration-300 ${solid ? 'bg-charcoal' : 'bg-white'} ${menuOpen ? 'rotate-45 translate-y-2' : ''}`}
           />
           <span
-            className={`block w-6 h-px bg-charcoal transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`}
+            className={`block w-6 h-px transition-all duration-300 ${solid ? 'bg-charcoal' : 'bg-white'} ${menuOpen ? 'opacity-0' : ''}`}
           />
           <span
-            className={`block w-6 h-px bg-charcoal transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`}
+            className={`block w-6 h-px transition-all duration-300 ${solid ? 'bg-charcoal' : 'bg-white'} ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`}
           />
         </button>
       </div>
 
       {/* Mobile menu */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-500 ${menuOpen ? 'max-h-64' : 'max-h-0'}`}
+        className={`md:hidden overflow-hidden transition-all duration-500 ${menuOpen ? 'max-h-72' : 'max-h-0'}`}
       >
         <div className="px-6 py-4 bg-cream/98 border-t border-gold/10 flex flex-col gap-6">
           {navLinks.map((link) => (
