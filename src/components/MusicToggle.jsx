@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import weddingSong from '../assets/audio/Nenjin Ezhuth x Sita Kalyanam - Extended  T33J3Y.mp3'
+import weddingSong from '../assets/audio/wedding-song.mp3'
 
 // Spotify track reference: https://open.spotify.com/track/4V1vg7WWerMbvebVgLe5Zq
 
