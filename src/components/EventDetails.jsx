@@ -58,14 +58,14 @@ function NoteIcon() {
 
 function DetailRow({ icon, label, children }) {
   return (
-    <div className="flex gap-4 text-left">
-      <span className="text-gold/70 shrink-0 mt-1">{icon}</span>
-      <div>
-        <p className="font-sans text-[0.65rem] tracking-ultra uppercase text-gold/60 font-light mb-1.5">
+    <div className="text-center">
+      <div className="flex items-center justify-center gap-2 mb-2.5 text-gold">
+        <span className="shrink-0">{icon}</span>
+        <p className="font-sans text-[0.7rem] tracking-ultra uppercase font-normal">
           {label}
         </p>
-        {children}
       </div>
+      {children}
     </div>
   )
 }
@@ -106,7 +106,7 @@ function EventCard({ event, index }) {
           {/* Date focal point */}
           <div className="flex items-stretch justify-center text-center">
             <div className="flex flex-col justify-center pr-5 md:pr-7">
-              <span className="font-sans text-[0.7rem] tracking-ultra uppercase text-gold/70 font-light">
+              <span className="font-sans text-[0.7rem] tracking-ultra uppercase text-gold font-normal">
                 {event.weekday}
               </span>
             </div>
@@ -116,7 +116,7 @@ function EventCard({ event, index }) {
               </span>
             </div>
             <div className="flex flex-col justify-center pl-5 md:pl-7">
-              <span className="font-sans text-[0.7rem] tracking-ultra uppercase text-gold/70 font-light">
+              <span className="font-sans text-[0.7rem] tracking-ultra uppercase text-gold font-normal">
                 {event.monthYear}
               </span>
             </div>
@@ -127,20 +127,20 @@ function EventCard({ event, index }) {
             <p className="font-serif text-xl md:text-2xl text-charcoal font-light tracking-wide">
               {event.time}
             </p>
-            <p className="font-sans text-xs text-charcoal/40 mt-1.5">{event.duration}</p>
+            <p className="font-sans text-xs text-charcoal/55 mt-1.5 tracking-wide">{event.duration}</p>
           </div>
 
           {/* Details */}
-          <div className="mt-12 space-y-6 max-w-md mx-auto">
+          <div className="mt-12 space-y-8 max-w-md mx-auto">
             <DetailRow icon={<PinIcon />} label="Venue">
-              <p className="font-serif text-lg text-charcoal font-light">{event.venue}</p>
-              <p className="font-serif text-charcoal/60 font-light leading-relaxed mt-1.5">
+              <p className="font-serif text-xl text-charcoal font-medium">{event.venue}</p>
+              <p className="font-serif text-base text-charcoal/75 font-light leading-relaxed mt-2">
                 {event.address}
               </p>
             </DetailRow>
 
             <DetailRow icon={<NoteIcon />} label="Good to know">
-              <p className="font-serif italic text-charcoal/60 font-light leading-relaxed">
+              <p className="font-serif text-base italic text-charcoal/75 font-light leading-relaxed">
                 {event.note}
               </p>
             </DetailRow>
@@ -181,7 +181,7 @@ export default function EventDetails() {
           <h2 className="display-heading text-5xl md:text-6xl mb-6">
             When &amp; <span className="font-script font-light text-gold normal-case">Where</span>
           </h2>
-          <p className="font-serif text-charcoal/50 text-xl font-light italic">
+          <p className="font-serif text-charcoal/65 text-xl font-light italic">
             Sunday, the 13th of September, 2026
           </p>
         </div>

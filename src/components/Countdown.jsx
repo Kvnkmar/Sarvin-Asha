@@ -51,7 +51,7 @@ export default function Countdown() {
           </p>
           <h2 className="font-display text-5xl md:text-6xl text-white mb-16">
             {isPast ? 'Thank you for celebrating with us' : (
-              <>The <span className="font-script font-light text-gold normal-case">big day</span></>
+              <>The <span className="font-script font-light text-gold normal-case">Big Day</span></>
             )}
           </h2>
         </div>

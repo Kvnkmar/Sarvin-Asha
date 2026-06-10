@@ -23,12 +23,12 @@ function FamilyCard({ family, index }) {
       <h3 className="font-subheading text-4xl md:text-5xl text-charcoal font-light mb-7">
         {family.name}
       </h3>
-      <p className="font-sans text-xs tracking-ultra uppercase text-gold/60 font-light mb-5">
+      <p className="font-sans text-xs tracking-ultra uppercase text-gold font-normal mb-5">
         {family.relation}
       </p>
-      <div className="font-serif text-xl md:text-2xl text-charcoal/80 font-light leading-relaxed">
+      <div className="font-serif text-xl md:text-2xl text-charcoal/90 font-normal leading-relaxed">
         <p>{family.parents[0]}</p>
-        <p className="text-gold/50 my-1 text-base font-serif italic">&amp;</p>
+        <p className="text-gold/70 my-1 text-base font-serif italic">&amp;</p>
         <p>{family.parents[1]}</p>
       </div>
     </div>
@@ -46,7 +46,7 @@ export default function Family() {
             Two Families,{' '}
             <span className="font-script font-light text-gold normal-case">One Union</span>
           </h2>
-          <p className="font-serif text-charcoal/50 text-xl font-light italic">
+          <p className="font-serif text-charcoal/65 text-xl font-light italic">
             United in love and tradition
           </p>
         </div>

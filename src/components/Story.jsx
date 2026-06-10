@@ -24,7 +24,7 @@ export default function Story() {
             <p className="story__eyebrow">Our Story</p>
             <h2 className="story__heading">
               Two souls,
-              <span className="story__heading-accent">one journey</span>
+              <span className="story__heading-accent">One Journey</span>
             </h2>
 
             <div className="story__body">
