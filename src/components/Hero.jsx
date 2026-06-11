@@ -1,5 +1,8 @@
-import heroPhoto from '../assets/DSC06915.jpg'
 import './Hero.css'
+
+// Served from /public at a stable path and preloaded in index.html, so the
+// browser fetches it immediately rather than waiting for the JS bundle.
+const heroPhoto = `${import.meta.env.BASE_URL}hero.jpg`
 
 const MANDALA_SPOKES = [0, 22.5, 45, 67.5, 90, 112.5, 135, 157.5]
 const MANDALA_PETALS = [0, 45, 90, 135, 180, 225, 270, 315]

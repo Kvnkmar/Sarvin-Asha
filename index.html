@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Preload the hero background so it starts downloading at HTML parse time,
+         in parallel with the JS bundle, instead of after React mounts.
+         Path is tied to vite `base` (/Sarvin-Asha/) + public/hero.jpg. -->
+    <link rel="preload" as="image" href="/Sarvin-Asha/hero.jpg" fetchpriority="high" />
     <title>Sarvin Nair & Asha — Forever Begins</title>
     <meta name="description" content="Join us as we celebrate the wedding of Sarvin Nair & Asha" />
 
