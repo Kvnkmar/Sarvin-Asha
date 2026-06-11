@@ -215,6 +215,17 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* The background image settles in from the top just ahead of the text. The
+   slight scale keeps it covering the frame while it drifts down (no edge gap). */
+.hero--entered .hero__bg {
+  animation: heroBgReveal 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+}
+
+@keyframes heroBgReveal {
+  from { opacity: 0; transform: translateY(-30px) scale(1.08); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
 @media (max-width: 640px) {
   .hero__corner {
     width: 36px;
