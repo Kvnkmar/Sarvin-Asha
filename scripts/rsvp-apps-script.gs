@@ -122,7 +122,12 @@ function getApprovedMessages() {
     var row = values[i];
     var message = (msgCol !== -1 ? row[msgCol] : '').toString().trim();
     if (!message) continue;
-    if (row[showCol] !== true) continue; // not approved yet
+
+    // Shown when the box is checked. Accept a real checkbox (boolean true) or a
+    // plain "TRUE" cell, so it works however the value ends up stored.
+    var flag = row[showCol];
+    var shown = flag === true || (typeof flag === 'string' && flag.toUpperCase() === 'TRUE');
+    if (!shown) continue;
 
     out.push({
       name: (nameCol !== -1 ? row[nameCol] : '').toString().trim(),
