@@ -2,18 +2,45 @@ import { useState } from 'react'
 
 const INITIAL_FORM = {
   name: '',
-  email: '',
   attendance: '',
   guests: '1',
-  dietary: '',
   message: '',
 }
 
+// Google Apps Script Web App URL — every submission is appended as a row to
+// your Google Sheet (which opens/exports as Excel). See RSVP-SETUP.md for the
+// one-time setup. You can also set VITE_RSVP_ENDPOINT instead of editing this.
+const RSVP_ENDPOINT =
+  import.meta.env.VITE_RSVP_ENDPOINT || 'https://script.google.com/macros/s/AKfycbwdL_VnIBdnsGFSmaNkwcsMTeWR-M4FtelUCczKns6y85ag0SyIo8Js5SkSYDc4fYk3cQ/exec'
+
+const ATTENDANCE_LABELS = {
+  ceremony: 'Attending',
+  decline: 'Not attending',
+}
+
 const submitRSVP = async (data) => {
-  // API integration point — replace with real endpoint
-  // e.g. await fetch('/api/rsvp', { method: 'POST', body: JSON.stringify(data) })
-  console.log('RSVP submitted:', data)
-  return new Promise((resolve) => setTimeout(resolve, 1200))
+  const payload = {
+    name: data.name.trim(),
+    attendance: ATTENDANCE_LABELS[data.attendance] || data.attendance,
+    guests: data.attendance === 'decline' ? '' : data.guests,
+    message: data.message.trim(),
+  }
+
+  if (!RSVP_ENDPOINT || RSVP_ENDPOINT === 'PASTE_YOUR_WEB_APP_URL_HERE') {
+    // Endpoint not configured yet — log locally so the form still "works".
+    console.warn('RSVP endpoint not set — submission not saved:', payload)
+    return
+  }
+
+  // Google Apps Script Web Apps don't send CORS headers, so we post as a
+  // "simple request" (text/plain, no-cors). The row is still written; we just
+  // can't read the response, so a resolved fetch is treated as success.
+  await fetch(RSVP_ENDPOINT, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(payload),
+  })
 }
 
 export default function RSVP({ guestName }) {
@@ -27,8 +54,6 @@ export default function RSVP({ guestName }) {
   const validate = () => {
     const errs = {}
     if (!form.name.trim()) errs.name = 'Name is required'
-    if (!form.email.trim()) errs.email = 'Email is required'
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errs.email = 'Invalid email'
     if (!form.attendance) errs.attendance = 'Please select your attendance'
     return errs
   }
@@ -117,22 +142,6 @@ export default function RSVP({ guestName }) {
             )}
           </div>
 
-          {/* Email */}
-          <div>
-            <label className="section-label block mb-3">Email Address *</label>
-            <input
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              placeholder="your@email.com"
-              className="wedding-input"
-            />
-            {errors.email && (
-              <p className="font-sans text-xs text-red-400 mt-2">{errors.email}</p>
-            )}
-          </div>
-
           {/* Attendance */}
           <div>
             <label className="section-label block mb-3">Attendance *</label>
@@ -169,19 +178,6 @@ export default function RSVP({ guestName }) {
               </select>
             </div>
           )}
-
-          {/* Dietary */}
-          <div>
-            <label className="section-label block mb-3">Dietary Requirements</label>
-            <input
-              type="text"
-              name="dietary"
-              value={form.dietary}
-              onChange={handleChange}
-              placeholder="Vegetarian, vegan, allergies, etc."
-              className="wedding-input"
-            />
-          </div>
 
           {/* Message */}
           <div>
