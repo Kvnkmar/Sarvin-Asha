@@ -85,28 +85,34 @@ like Excel and updates live).
 ## The "Wishes" wall — showing guests' messages on the site
 
 The site has a **Wishes** section that displays the messages guests leave, so
-their blessings appear on the page. Messages show **automatically**, and you can
-hide any one with a single un-tick in the Sheet.
+their blessings appear on the page. Messages show **automatically** — there is no
+box to tick. Only the guest's name and message are ever shown, never their
+attendance or anything else.
 
-### One-time: re-deploy the updated script
+### Re-deploying the script (do this after any script change)
 
-The read feature lives in the same `rsvp-apps-script.gs`, so you need to push the
-latest version once:
+The read feature lives in the same `rsvp-apps-script.gs`, so you push the latest
+version like this:
 
 1. Open [`scripts/rsvp-apps-script.gs`](scripts/rsvp-apps-script.gs), copy
    **everything**, and paste it over the code in your Apps Script editor
    (**Extensions → Apps Script**). Save 💾.
-2. **Deploy → Manage deployments → ✏ Edit → Version: New version → Deploy.**
-   The URL stays the same, so nothing on the site needs to change.
+2. **Deploy → Manage deployments** → click the **✏️ pencil (Edit)** on your
+   **existing** deployment → **Version: "New version"** → **Deploy**.
+   - ⚠️ Do **not** click **"New deployment"** — that creates a *different* URL
+     the site won't use, so your changes won't appear. Always **Edit** the
+     existing one.
+   - The Web app URL must stay the **same** (ends in `...4fYk3cQ/exec`).
+3. **Confirm it worked:** open the Web app URL in a browser. It should say
+   *"... running. **[v4-autoshow]**"*. If the version in brackets is different or
+   missing, the new code isn't live yet — repeat step 2.
 
-### Showing / hiding messages
+### Hiding a message
 
-- Messages appear on the Wishes wall **automatically**. When a guest submits one,
-  a new row gets a **pre-checked box in the "Show on site" column** (column F).
-- To **hide** a message, **un-tick its box**; tick it again to show it. Only the
-  message and the guest's name are ever shown — never their attendance or
-  anything else.
-- Changes appear on the site within a minute or two (a guest may need to refresh).
+Messages are public by default. To hide one, open the Sheet and **clear the text
+in that row's "Message" cell**. The rest of that guest's RSVP
+(name, attendance) stays intact, and the message disappears from the site within
+a minute or two.
 
 ## Prefer not to use Apps Script?
 

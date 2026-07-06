@@ -1,26 +1,26 @@
 /**
- * RSVP → Google Sheet backend for the Sarvin & Asha wedding site.
+ * RSVP -> Google Sheet backend for the Sarvin & Asha wedding site.   [v4-autoshow]
  *
- * Handles two things:
- *   1. doPost — appends each RSVP submission as a new row, and adds a pre-checked
- *      "Show on site" checkbox next to any message (shows automatically; un-tick
- *      the box to hide a message).
- *   2. doGet  — when called with ?callback=... (JSONP), returns the messages you
- *      have approved, so the site's "Wishes" section can display them.
+ *   1. doPost — appends each RSVP submission as a new row.
+ *   2. doGet  — with ?callback=... (JSONP), returns every message so the site's
+ *      "Wishes" section can display them. Messages show AUTOMATICALLY — there is
+ *      no checkbox to tick. To hide one message, clear the text in its "Message"
+ *      cell (the rest of that person's RSVP stays intact).
  *
  * Paste this whole file into the Apps Script editor bound to your Google Sheet
- * (Extensions -> Apps Script), then deploy it as a Web App. Full step-by-step
- * instructions are in RSVP-SETUP.md at the repo root. IMPORTANT: after editing
- * this script you must re-deploy a NEW VERSION for changes to take effect
- * (Deploy -> Manage deployments -> Edit -> Version: New version -> Deploy).
+ * (Extensions -> Apps Script). IMPORTANT — how to make changes go live:
+ *   Deploy -> Manage deployments -> click the PENCIL (Edit) on your EXISTING
+ *   deployment -> Version: "New version" -> Deploy.
+ * Do NOT use "New deployment" (that creates a different URL the site won't use).
  *
- * Every submission is appended as a new row. Open the Sheet in Google Sheets and
- * use File -> Download -> Microsoft Excel (.xlsx) any time you want it as Excel.
+ * To confirm a deploy worked, open the Web app URL in a browser: it should say
+ * "... running. [v4-autoshow]". If the version in brackets doesn't match, the
+ * new code isn't live yet.
  */
 
 var SHEET_NAME = 'RSVPs';
-var HEADERS = ['Timestamp', 'Full Name', 'Attendance', 'Guests', 'Message', 'Show on site'];
-var SHOW_COL = HEADERS.indexOf('Show on site') + 1; // 1-based column index (6)
+var HEADERS = ['Timestamp', 'Full Name', 'Attendance', 'Guests', 'Message'];
+var VERSION = 'v4-autoshow';
 
 function doPost(e) {
   var lock = LockService.getScriptLock();
@@ -32,58 +32,41 @@ function doPost(e) {
     ensureHeaders(sheet);
 
     var data = JSON.parse(e.postData.contents);
-    var message = (data.message || '').toString().trim();
-
     sheet.appendRow([
       new Date(),
       data.name || '',
       data.attendance || '',
       data.guests || '',
-      message,
-      '', // 'Show on site' — filled in below only when there's a message
+      (data.message || '').toString().trim(),
     ]);
 
-    // If the guest left a message, add a PRE-CHECKED "Show on site" checkbox so
-    // the message appears on the Wishes wall automatically. Un-tick it to hide.
-    if (message !== '') {
-      var showCell = sheet.getRange(sheet.getLastRow(), SHOW_COL);
-      showCell.insertCheckboxes();
-      showCell.setValue(true);
-    }
-
-    return ContentService
-      .createTextOutput(JSON.stringify({ result: 'success' }))
-      .setMimeType(ContentService.MimeType.JSON);
+    return jsonOut({ result: 'success' });
   } catch (err) {
-    return ContentService
-      .createTextOutput(JSON.stringify({ result: 'error', error: String(err) }))
-      .setMimeType(ContentService.MimeType.JSON);
+    return jsonOut({ result: 'error', error: String(err) });
   } finally {
     lock.releaseLock();
   }
 }
 
 function doGet(e) {
-  // JSONP request from the Wishes section: return approved messages wrapped in
-  // the requested callback so it isn't blocked by the browser's CORS policy.
+  // JSONP request from the Wishes section: return messages wrapped in the
+  // requested callback so it isn't blocked by the browser's CORS policy.
   var callback = e && e.parameter && e.parameter.callback;
   if (callback) {
-    var messages = getApprovedMessages();
     return ContentService
-      .createTextOutput(callback + '(' + JSON.stringify(messages) + ')')
+      .createTextOutput(callback + '(' + JSON.stringify(getMessages()) + ')')
       .setMimeType(ContentService.MimeType.JAVASCRIPT);
   }
 
-  // Plain visit in a browser — confirms the endpoint is live.
+  // Plain visit in a browser — confirms the endpoint is live AND which version.
   return ContentService
-    .createTextOutput('Sarvin & Asha RSVP endpoint is running.')
+    .createTextOutput('Sarvin & Asha RSVP endpoint is running. [' + VERSION + ']')
     .setMimeType(ContentService.MimeType.TEXT);
 }
 
 /**
- * Makes sure row 1 holds the full header (including "Show on site"). This
- * self-heals sheets first created by an earlier version of this script, so the
- * approval column is always present.
+ * Makes sure row 1 holds the header. Self-heals sheets created by an earlier
+ * version of this script.
  */
 function ensureHeaders(sheet) {
   if (sheet.getLastRow() === 0) {
@@ -100,13 +83,10 @@ function ensureHeaders(sheet) {
 }
 
 /**
- * Returns [{ name, message }] for every row that (a) has a message and
- * (b) has its "Show on site" box ticked. A row is shown ONLY when the box is
- * explicitly checked — blank/unchecked rows stay private. If the header label
- * can't be found, we fall back to the fixed approval column so nothing is ever
- * exposed by accident.
+ * Returns [{ name, message }] for every row that has a message. To hide a
+ * message from the site, clear its "Message" cell in the Sheet.
  */
-function getApprovedMessages() {
+function getMessages() {
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
   if (!sheet || sheet.getLastRow() < 2) return [];
 
@@ -114,8 +94,6 @@ function getApprovedMessages() {
   var header = values[0];
   var nameCol = header.indexOf('Full Name');
   var msgCol = header.indexOf('Message');
-  var showCol = header.indexOf('Show on site');
-  if (showCol === -1) showCol = SHOW_COL - 1; // fixed column F fallback
 
   var out = [];
   for (var i = 1; i < values.length; i++) {
@@ -123,16 +101,16 @@ function getApprovedMessages() {
     var message = (msgCol !== -1 ? row[msgCol] : '').toString().trim();
     if (!message) continue;
 
-    // Shown when the box is checked. Accept a real checkbox (boolean true) or a
-    // plain "TRUE" cell, so it works however the value ends up stored.
-    var flag = row[showCol];
-    var shown = flag === true || (typeof flag === 'string' && flag.toUpperCase() === 'TRUE');
-    if (!shown) continue;
-
     out.push({
       name: (nameCol !== -1 ? row[nameCol] : '').toString().trim(),
       message: message,
     });
   }
   return out;
+}
+
+function jsonOut(obj) {
+  return ContentService
+    .createTextOutput(JSON.stringify(obj))
+    .setMimeType(ContentService.MimeType.JSON);
 }
