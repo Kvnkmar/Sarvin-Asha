@@ -85,8 +85,8 @@ like Excel and updates live).
 ## The "Wishes" wall — showing guests' messages on the site
 
 The site has a **Wishes** section that displays the messages guests leave, so
-their blessings appear on the page. You control exactly which ones show — nothing
-is public until you approve it.
+their blessings appear on the page. Messages show **automatically**, and you can
+hide any one with a single un-tick in the Sheet.
 
 ### One-time: re-deploy the updated script
 
@@ -99,17 +99,14 @@ latest version once:
 2. **Deploy → Manage deployments → ✏ Edit → Version: New version → Deploy.**
    The URL stays the same, so nothing on the site needs to change.
 
-### Approving a message (every time)
+### Showing / hiding messages
 
-- When a guest submits a message, a new row appears with an **unchecked box in
-  the "Show on site" column** (column F).
-- **Tick that box** to publish the message on the Wishes wall. Untick it to hide
-  it again. Only the message and the guest's name are shown — never their
-  attendance or anything else.
-- Changes appear on the site within a minute or two of ticking the box (a guest
-  may need to refresh).
-
-That's it — the wall stays empty until you approve your first message.
+- Messages appear on the Wishes wall **automatically**. When a guest submits one,
+  a new row gets a **pre-checked box in the "Show on site" column** (column F).
+- To **hide** a message, **un-tick its box**; tick it again to show it. Only the
+  message and the guest's name are ever shown — never their attendance or
+  anything else.
+- Changes appear on the site within a minute or two (a guest may need to refresh).
 
 ## Prefer not to use Apps Script?
 

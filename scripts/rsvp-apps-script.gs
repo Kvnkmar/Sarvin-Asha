@@ -2,8 +2,9 @@
  * RSVP → Google Sheet backend for the Sarvin & Asha wedding site.
  *
  * Handles two things:
- *   1. doPost — appends each RSVP submission as a new row, and adds an unchecked
- *      "Show on site" checkbox next to any message so you can approve it.
+ *   1. doPost — appends each RSVP submission as a new row, and adds a pre-checked
+ *      "Show on site" checkbox next to any message (shows automatically; un-tick
+ *      the box to hide a message).
  *   2. doGet  — when called with ?callback=... (JSONP), returns the messages you
  *      have approved, so the site's "Wishes" section can display them.
  *
@@ -42,12 +43,12 @@ function doPost(e) {
       '', // 'Show on site' — filled in below only when there's a message
     ]);
 
-    // If the guest left a message, drop an unchecked checkbox in the
-    // "Show on site" column. Tick it to publish that message on the site.
+    // If the guest left a message, add a PRE-CHECKED "Show on site" checkbox so
+    // the message appears on the Wishes wall automatically. Un-tick it to hide.
     if (message !== '') {
       var showCell = sheet.getRange(sheet.getLastRow(), SHOW_COL);
       showCell.insertCheckboxes();
-      showCell.setValue(false);
+      showCell.setValue(true);
     }
 
     return ContentService

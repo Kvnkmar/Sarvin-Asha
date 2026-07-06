@@ -48,17 +48,17 @@ function loadApprovedMessages() {
 function WishCard({ wish, index }) {
   return (
     <figure
-      className="fade-up break-inside-avoid mb-6 bg-cream border border-gold/10 px-8 py-9 text-center"
+      className="fade-up h-full flex flex-col justify-center bg-cream border border-gold/10 px-6 py-8 text-center"
       style={{ transitionDelay: `${Math.min(index, 6) * 0.08}s` }}
     >
-      <span className="font-script text-gold/50 text-5xl leading-none block mb-3" aria-hidden="true">
+      <span className="font-script text-gold/50 text-4xl leading-none block mb-2" aria-hidden="true">
         &ldquo;
       </span>
-      <blockquote className="font-serif text-charcoal/80 text-lg md:text-xl font-light italic leading-relaxed">
+      <blockquote className="font-serif text-charcoal/80 text-base md:text-lg font-light italic leading-relaxed">
         {wish.message}
       </blockquote>
       {wish.name && (
-        <figcaption className="section-label mt-6 not-italic">
+        <figcaption className="section-label mt-5 not-italic">
           {wish.name}
         </figcaption>
       )}
@@ -98,7 +98,7 @@ export default function Wishes() {
         </span>
       </div>
 
-      <div className="max-w-5xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="text-center mb-20 fade-up">
           <p className="section-label mb-6">From the Heart</p>
@@ -113,7 +113,7 @@ export default function Wishes() {
 
         {/* Wishes wall */}
         {hasWishes && (
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {wishes.map((wish, i) => (
               <WishCard key={i} wish={wish} index={i} />
             ))}
