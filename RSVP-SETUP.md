@@ -82,11 +82,34 @@ like Excel and updates live).
 
 ---
 
-## Updating the script later
+## The "Wishes" wall — showing guests' messages on the site
 
-If you ever edit `rsvp-apps-script.gs`, in Apps Script go
-**Deploy → Manage deployments → ✏ Edit → Version: New version → Deploy**. The
-URL stays the same, so you don't need to change the site.
+The site has a **Wishes** section that displays the messages guests leave, so
+their blessings appear on the page. You control exactly which ones show — nothing
+is public until you approve it.
+
+### One-time: re-deploy the updated script
+
+The read feature lives in the same `rsvp-apps-script.gs`, so you need to push the
+latest version once:
+
+1. Open [`scripts/rsvp-apps-script.gs`](scripts/rsvp-apps-script.gs), copy
+   **everything**, and paste it over the code in your Apps Script editor
+   (**Extensions → Apps Script**). Save 💾.
+2. **Deploy → Manage deployments → ✏ Edit → Version: New version → Deploy.**
+   The URL stays the same, so nothing on the site needs to change.
+
+### Approving a message (every time)
+
+- When a guest submits a message, a new row appears with an **unchecked box in
+  the "Show on site" column** (column F).
+- **Tick that box** to publish the message on the Wishes wall. Untick it to hide
+  it again. Only the message and the guest's name are shown — never their
+  attendance or anything else.
+- Changes appear on the site within a minute or two of ticking the box (a guest
+  may need to refresh).
+
+That's it — the wall stays empty until you approve your first message.
 
 ## Prefer not to use Apps Script?
 

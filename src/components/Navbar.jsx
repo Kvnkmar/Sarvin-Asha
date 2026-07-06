@@ -6,6 +6,7 @@ const navLinks = [
   { label: 'Family', href: '#family' },
   { label: 'Gallery', href: '#gallery' },
   { label: 'RSVP', href: '#rsvp' },
+  { label: 'Wishes', href: '#wishes' },
 ]
 
 export default function Navbar() {

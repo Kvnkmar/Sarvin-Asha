@@ -11,6 +11,7 @@ import EventDetails from './components/EventDetails'
 import Family from './components/Family'
 import Gallery from './components/Gallery'
 import RSVP from './components/RSVP'
+import Wishes from './components/Wishes'
 import Footer from './components/Footer'
 import MusicToggle from './components/MusicToggle'
 
@@ -56,6 +57,7 @@ export default function App() {
       <EventDetails />
       <Gallery />
       <RSVP guestName={guestName} />
+      <Wishes />
       <Footer />
       <MusicToggle audioRef={audioRef} />
     </div>

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { RSVP_ENDPOINT, RSVP_CONFIGURED } from '../config'
 
 const INITIAL_FORM = {
   name: '',
@@ -6,12 +7,6 @@ const INITIAL_FORM = {
   guests: '1',
   message: '',
 }
-
-// Google Apps Script Web App URL — every submission is appended as a row to
-// your Google Sheet (which opens/exports as Excel). See RSVP-SETUP.md for the
-// one-time setup. You can also set VITE_RSVP_ENDPOINT instead of editing this.
-const RSVP_ENDPOINT =
-  import.meta.env.VITE_RSVP_ENDPOINT || 'https://script.google.com/macros/s/AKfycbwdL_VnIBdnsGFSmaNkwcsMTeWR-M4FtelUCczKns6y85ag0SyIo8Js5SkSYDc4fYk3cQ/exec'
 
 const ATTENDANCE_LABELS = {
   ceremony: 'Attending',
@@ -26,7 +21,7 @@ const submitRSVP = async (data) => {
     message: data.message.trim(),
   }
 
-  if (!RSVP_ENDPOINT || RSVP_ENDPOINT === 'PASTE_YOUR_WEB_APP_URL_HERE') {
+  if (!RSVP_CONFIGURED) {
     // Endpoint not configured yet — log locally so the form still "works".
     console.warn('RSVP endpoint not set — submission not saved:', payload)
     return
